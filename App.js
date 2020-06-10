@@ -1,46 +1,43 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import React from "react";
+import { StyleSheet, View, ScrollView } from "react-native";
+import NativeText from "./Components/Nativetext";
+import NativeInput from "./Components/NativeInput";
+import NativeButton from "./Components/NativeButton";
 
 export default function App() {
-  const [text, setText] = useState("");
-  const [count, setCount] = useState(1);
   return (
-    <React.Fragment>
+    <ScrollView>
       <View>
-        <Text style={styles.heading}>Calculator</Text>
-
-        <TextInput
-          placeholder="Enter your Expression"
-          textContentType="number"
-        />
-        <Button title="=" />
+        <NativeText title="Welcome to React Native basics!" />
       </View>
-      {/* <View style={styles.container}>
-        <TextInput
-          style={{ height: 90, width: 100 }}
-          placeholder="Enter your name"
-          onChangeText={(text) => setText(text)}
-          defaultValue={text}
+      <View>
+        <NativeInput
+          placeholderValue="Enter Your Username"
+          type="emailAddress"
+          secureEntry={false}
         />
-        <Text style={{ padding: 10, fontSize: 42 }}>
-          {text
-            .split(" ")
-            .map((word) => word && "🍕")
-            .join(" ")}
-        </Text>
-        <Button title="submit" onPress={(count) => setCount(count + 1)} />
-        <Text>{count}</Text>
-      </View> */}
-    </React.Fragment>
+        <NativeInput
+          placeholderValue="Enter Your Password"
+          type="password"
+          secureEntry={true}
+        />
+      </View>
+      <View style={styles.container}>
+        <NativeButton name="Login" color="green" />
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    marginTop: 10,
+    marginLeft: 150,
+    marginRight: 20,
+    height: 40,
+    width: 100,
+    paddingLeft: 0,
+    borderRadius: 60,
   },
   heading: {
     color: "skyblue",
